@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Partner With Us — ClinOmicsAI</title>
+<meta name="description" content="Get in touch with ClinOmicsAI — pharmaceutical sponsors and academic partners interested in biomarker-guided trial design and collaborative research." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-700-normal.woff2" crossorigin="anonymous" />
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond-600-normal.woff2" crossorigin="anonymous" />
+<link rel="preload" as="font" type="font/woff2" href="fonts/dm-serif-display-normal.woff2" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=optional" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="index.html" aria-label="ClinOmicsAI home">
+      <img src="images/logo.png" alt="ClinOmicsAI" class="brand__img" />
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="pipeline.html">Pipeline</a>
+      <a href="partner.html" class="is-current">Contact</a>
+    </nav>
+    <a href="partner.html" class="btn btn--cta nav__cta">Partner With Us</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <section class="section section--dark partner" id="partner">
+    <div class="partner__bg" aria-hidden="true">
+      <img src="images/partner-hero.jpg" alt="" />
+      <div class="partner__bg-overlay"></div>
+    </div>
+    <div class="wrap partner__inner">
+      <div class="partner__copy reveal">
+        <h2 class="display display--light">Partner <em>With Us</em></h2>
+        <p class="lead lead--light">Whether you're a pharmaceutical sponsor exploring biomarker-guided trial design or an academic partner interested in collaborative research, we'd like to hear from you.</p>
+        <ul class="partner__meta">
+          <li><span class="partner__dot" aria-hidden="true"></span><div><strong>Corporate Headquarters</strong><p>Erie, Pennsylvania, USA</p></div></li>
+          <li><span class="partner__dot partner__dot--alt" aria-hidden="true"></span><div><strong>Secondary Office</strong><p>10440 S Rainbow Blvd, Ste 400 #5066908<br>Las Vegas, NV 89139, USA</p></div></li>
+        </ul>
+      </div>
+      <div class="pform pform--jotform reveal">
+        <iframe
+          id="JotFormIFrame-261466569244062"
+          title="Partner With ClinOmicsAI"
+          onload="window.parent.scrollTo(0,0)"
+          allowtransparency="true"
+          allow="geolocation; microphone; camera; fullscreen"
+          src="https://form.jotform.com/261466569244062"
+          frameborder="0"
+          style="min-width:100%;max-width:100%;height:640px;border:none;display:block;"
+          scrolling="no"
+        ></iframe>
+        <script type="text/javascript">
+          var ifr = document.getElementById("JotFormIFrame-261466569244062");
+          if (window.location.href && window.location.href.indexOf("?") > -1) {
+            var get = window.location.href.substr(window.location.href.indexOf("?") + 1);
+            if (ifr && get.length > 0) {
+              var src = ifr.src;
+              src = src.indexOf("?") > -1 ? src + "&" + get : src + "?" + get;
+              ifr.src = src;
+            }
+          }
+          window.handleIFrameMessage = function(e) {
+            if (typeof e.data === 'object') { return; }
+            var args = e.data.split(":");
+            var iframe;
+            if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+            if (!iframe) { return; }
+            switch (args[0]) {
+              case "scrollIntoView":
+                iframe.scrollIntoView();
+                break;
+              case "setHeight":
+                var trustedHeight = +args[1];
+                if (trustedHeight > 200 && trustedHeight < 5000) {
+                  iframe.style.height = trustedHeight + "px";
+                }
+                break;
+              case "setMinHeight":
+                var trustedMinHeight = +args[1];
+                if (trustedMinHeight > 200 && trustedMinHeight < 5000) {
+                  iframe.style.minHeight = trustedMinHeight + "px";
+                }
+                break;
+              case "collapseErrorPage":
+                if (iframe.clientHeight > window.innerHeight) {
+                  iframe.style.height = window.innerHeight + "px";
+                }
+                break;
+              case "reloadPage":
+                window.location.reload();
+                break;
+            }
+          };
+          if (window.addEventListener) {
+            window.addEventListener("message", handleIFrameMessage, false);
+          } else if (window.attachEvent) {
+            window.attachEvent("onmessage", handleIFrameMessage);
+          }
+        </script>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__top">
+    <div class="footer__brand">
+      <a class="brand" href="index.html" aria-label="ClinOmicsAI home"><img src="images/logo.png" alt="ClinOmicsAI" class="brand__img" /></a>
+      <p>Precision proteomics for ophthalmic drug development — molecular truth from microvolume samples.</p>
+    </div>
+    <div class="footer__col"><h4>Explore</h4><ul><li><a href="technology.html">Technology</a></li><li><a href="pipeline.html">Pipeline</a></li><li><a href="leadership.html">Leadership</a></li></ul></div>
+    <div class="footer__col"><h4>Connect</h4><ul><li><a href="partner.html">Partner With Us</a></li></ul></div>
+    <div class="footer__col"><h4>Locations</h4><ul><li>Erie, PA — HQ</li><li>Las Vegas, NV</li></ul></div>
+  </div>
+  <div class="wrap footer__bottom"><span>© 2026 ClinOmicsAI. All rights reserved.</span><span>Discovery · Validation · Enrichment</span></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

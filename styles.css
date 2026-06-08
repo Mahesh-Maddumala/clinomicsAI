@@ -1,0 +1,2600 @@
+/* ──────────────────────────────────────────────
+   ClinOmicsAI — Precision Proteomics
+   Brand palette derived from the deck: deep navy hero/CTA panels,
+   warm cream sections, electric cyan + soft teal as the brand AI accent,
+   DM Serif Display italic for emphasis, Inter for body.
+   ────────────────────────────────────────────── */
+
+/* Cormorant Garamond — self-hosted to eliminate FOUT on navigation.
+   font-display: block hides text briefly until the local font loads (~10ms),
+   which prevents the visible flash between fallback and target font. */
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:normal;
+  font-weight:400;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-400-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:normal;
+  font-weight:500;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-500-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:normal;
+  font-weight:600;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-600-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:normal;
+  font-weight:700;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-700-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:italic;
+  font-weight:400;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-400-italic.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:italic;
+  font-weight:500;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-500-italic.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Cormorant Garamond';
+  font-style:italic;
+  font-weight:600;
+  font-display:block;
+  src:url('fonts/cormorant-garamond-600-italic.woff2') format('woff2');
+}
+/* DM Serif Display — self-hosted to eliminate thickness inconsistency caused by font-display: optional */
+@font-face{
+  font-family:'DM Serif Display';
+  font-style:normal;
+  font-weight:400;
+  font-display:block;
+  src:url('fonts/dm-serif-display-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'DM Serif Display';
+  font-style:italic;
+  font-weight:400;
+  font-display:block;
+  src:url('fonts/dm-serif-display-italic.woff2') format('woff2');
+}
+
+:root{
+  /* ── Brand palette — sampled directly from ClinOmicsAI logo.JPG ── */
+  --ink:        #4366d8;           /* deep cobalt-indigo — the "AI" letters + bottom of the C */
+  --ink-2:      #2a3d80;           /* deeper indigo — dark card surfaces / form panel */
+  --ink-deep:   #1f3a8a;           /* deepest indigo — footer / shadow stops */
+  --cyan:       #50a9ed;           /* sky blue — top arc of the C + the dot */
+  --cyan-2:     #9fd3f5;           /* pale sky — gradient pair, soft accents */
+  --teal:       #4366d8;           /* alias of --ink — kept for italic-gradient pair semantics */
+  --gold:       #9fd3f5;           /* alias of --cyan-2 — kept for partner-dot variant */
+  /* ── Surfaces ── */
+  --paper:      #ffffff;
+  --cream:      #f6efe2;           /* warm editorial cream — Pipeline section */
+  --cream-2:    #efe6d4;
+  /* ── Text ── */
+  --text-dark:  #0a0a0a;           /* near-black — matches the "ClinOmics" letters */
+  --text:       #455368;           /* slate body text on white */
+  --text-soft:  #cbd6e3;           /* body text on dark sections */
+  --muted:      #7c8aa0;           /* captions, labels */
+  /* ── Rules / borders ── */
+  --rule:       #e3dccb;
+  --rule-2:     #1f3556;
+  /* ── Semantic-only (used sparingly) ── */
+  --red:        #d94a3a;           /* form errors + Challenge "X" icon */
+  --amber:      #d9a13a;           /* "Planned" trial pill + warning icon */
+  --serif:      "DM Serif Display", "Playfair Display", Georgia, serif;
+  --sans:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:       "JetBrains Mono", ui-monospace, monospace;
+  --ease:       cubic-bezier(.22,.61,.36,1);
+  --shadow-1:   0 2px 6px rgba(67,102,216,.05), 0 14px 34px -22px rgba(67,102,216,.18);
+  --shadow-2:   0 6px 14px rgba(67,102,216,.08), 0 28px 60px -22px rgba(67,102,216,.28);
+  --shadow-cyan:0 6px 12px rgba(67,102,216,.06), 0 28px 60px -22px rgba(80,169,237,.4);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  color:var(--text);
+  background:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;transition:color .2s var(--ease)}
+button{font-family:inherit}
+
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+
+/* ── kickers */
+.kicker{
+  font-family:var(--sans);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  margin:0 0 22px;
+}
+.kicker--dark{color:var(--ink);opacity:.7}
+
+/* ── display headlines */
+.display{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.2rem,4.6vw,3.6rem);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  color:var(--text-dark);
+  margin:0 0 22px;
+}
+.display em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--cyan) 0%,var(--teal) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.display--light{color:#fff}
+.display--light em{
+  background:linear-gradient(90deg,var(--cyan-2) 0%,var(--teal) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.lead{font: size 1.1em;rem;line-height:1.6;color:var(--text);margin:0 0 28px;max-width:62ch}
+.lead--light{color:var(--text-soft)}
+
+/* ── buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--sans);
+  font-size:1.12rem;
+  font-weight:600;
+  padding:11px 22px;
+  border-radius:8px;
+  border:1.5px solid transparent;
+  cursor:pointer;
+  letter-spacing:.005em;
+  transition:all .25s var(--ease);
+  white-space:nowrap;
+}
+.btn--cta{
+  background:linear-gradient(135deg,#f5a623 0%,#d7742d 100%);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 0 0 1px rgba(245,166,35,.55),0 12px 30px -10px rgba(217,126,61,.55);
+}
+.btn--cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 0 1px rgba(245,166,35,.75),0 18px 38px -12px rgba(217,126,61,.7);
+}
+.btn--ghost{
+  background:transparent;
+  color:#fff;
+  border-color:rgba(255,255,255,.3);
+}
+.btn--ghost:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.6);
+  transform:translateY(-2px);
+}
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+   ───────────────────────────────────────── */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  background:#ffffff;
+  border-bottom:1px solid rgba(67,102,216,.12);
+  transition:box-shadow .3s var(--ease);
+}
+.nav.is-stuck{
+  background:#ffffff;
+  box-shadow:0 6px 22px -16px rgba(67,102,216,.28);
+}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:92px}
+.brand{
+  display:inline-flex;
+  align-items:center;
+  color:#0a0a0a;
+  text-decoration:none;
+}
+.brand__img{
+  height:48px;
+  width:auto;
+  display:block;
+  transition:transform .25s var(--ease);
+  mix-blend-mode:multiply;
+}
+.brand:hover .brand__img{transform:translateY(-1px)}
+.nav__links{display:flex;align-items:center;gap:42px}
+.nav__links a{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.22rem;
+  font-weight:700;
+  color:#0a0a0a;
+  letter-spacing:.008em;
+  position:relative;
+  transition:
+    color .35s cubic-bezier(.22,.61,.36,1),
+    transform .35s cubic-bezier(.22,.61,.36,1);
+}
+.nav__links a::after{
+  content:"";
+  position:absolute;
+  left:50%;right:50%;bottom:-6px;
+  height:2px;
+  background:linear-gradient(90deg,#4366d8 0%,#6ba1d4 100%);
+  border-radius:2px;
+  transition:
+    left .4s cubic-bezier(.22,.61,.36,1),
+    right .4s cubic-bezier(.22,.61,.36,1);
+}
+.nav__links a:hover{
+  color:#4366d8;
+  transform:translateY(-1px);
+}
+.nav__links a:hover::after{left:0;right:0}
+.nav__links a.is-current{color:#4366d8}
+.nav__links a.is-current::after{left:0;right:0}
+/* Nav CTA button removed per design — hidden in all states */
+.nav__cta{display:none !important}
+.nav__toggle{
+  display:none;
+  background:none;border:none;cursor:pointer;
+  width:32px;height:28px;
+  flex-direction:column;gap:6px;
+  align-items:center;justify-content:center;
+}
+.nav__toggle span{width:24px;height:2px;background:#0a0a0a;transition:transform .25s var(--ease)}
+
+/* ─────────────────────────────────────────
+   HERO
+   ───────────────────────────────────────── */
+.hero{
+  position:relative;
+  background:#6ba1d4;
+  color:#ffffff;
+  padding:200px 0 100px;
+  min-height:68vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+/* Image covers the FULL hero — used as background */
+.hero__bg{position:absolute;inset:0;z-index:0}
+.hero__bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center right;
+}
+/* Soft darker-blue fade on the LEFT for white text contrast → transparent RIGHT for image */
+.hero__overlay{url(technology.html)
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,
+    rgba(35,75,125,.55) 0%,
+    rgba(35,75,125,.35) 30%,
+    rgba(35,75,125,.12) 55%,
+    transparent 80%);
+}
+.hero__inner{position:relative;z-index:2;width:100%}
+.hero__copy{max-width:600px}
+.hero__title{
+  font-family:"Playfair Display", Georgia, serif;
+  font-weight:500;
+  font-size:clamp(1.9rem,4.1vw,2.9rem);
+  line-height:1.12;
+  letter-spacing:-.012em;
+  color:#ffffff;
+  margin:0 0 26px;
+  max-width:22ch;
+  text-shadow:0 2px 22px rgba(15,35,65,.45);
+}
+.hero__title em{
+  font-style:italic;
+  font-weight:500;
+  color:#ffd97a;       /* brighter gold fallback */
+  text-shadow:none;
+}
+/* Each word ("Liquid" / "Biopsy" / "Intelligence") — solid bright gold with a soft glow, no gradient, no shadow */
+.hero__title em .hero__em-li{
+  display:inline-block;
+  background:none;
+  -webkit-background-clip:initial;
+  background-clip:initial;
+  -webkit-text-fill-color:#d7742d;
+  color:#f0b624;
+  font-size:1.12em;
+  letter-spacing:-.012em;
+  text-shadow:none;
+  /*filter:drop-shadow(0 0 14px rgba(255,217,122,.5));*/
+}
+.hero__lead{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.25rem,1.7vw,1.55rem);
+  color:rgba(255,255,255,.96);
+  line-height:1.45;
+  max-width:54ch;
+  margin:0 0 32px;
+  letter-spacing:.003em;
+  text-shadow:0 1px 14px rgba(15,35,65,.4);
+}
+.hero .btn--ghost{
+  color:#ffffff;
+  border-color:rgba(255,255,255,.7);
+}
+.hero .btn--ghost:hover{
+  background:#ffffff;
+  color:#234b7d;
+  border-color:#ffffff;
+}
+.hero__actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* Stats strip — placed just above the footer */
+.stats-strip{
+  background:linear-gradient(135deg,#4366d8 0%,#1f3a8a 100%);
+  padding:56px 0;
+  color:#fff;
+}
+.stats-strip__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+.stat{display:flex;flex-direction:column;gap:6px}
+.stat__num{
+  font-family:var(--serif);
+  font-size:2.4rem;
+  font-weight:400;
+  color:#fff;
+  line-height:1;
+  letter-spacing:-.01em;
+}
+.stat__plus,.stat__unit{color:#7be4ff;font-size:.65em;margin-left:2px}
+.stat__label{font-size:.9rem;color:rgba(255,255,255,.78);letter-spacing:.005em;margin-top:4px}
+@media (max-width:780px){
+  .stats-strip__grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .stats-strip{padding:44px 0}
+  .stat__num{font-size:2rem}
+}@media (max-width:780px){
+  .overview__grid{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────────────────
+   PAGE HEADER (sub-pages)
+   ───────────────────────────────────────── */
+.page-header{
+  position:relative;
+  padding:140px 0 56px;
+  background:linear-gradient(135deg, var(--ink) 0%, #14138c 100%);
+  color:#fff;
+  overflow:hidden;
+}
+.page-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(50% 70% at 18% 30%, rgba(80,169,237,.16), transparent 65%),
+    radial-gradient(45% 60% at 90% 80%, rgba(67,102,216,.10), transparent 65%);
+  pointer-events:none;
+}/* White page-header variant — matches the home page's "Clinical Pipeline" section typography */
+.page-header--white{
+  background:#ffffff;
+  padding:140px 0 60px;
+}
+.page-header--white::before{display:none}/* Continuous shimmer — the italic gradient gently scrolls across the em */
+@keyframes pipeline-em-shimmer{
+  0%   { background-position:0% 50%; }
+  100% { background-position:200% 50%; }
+}/* Subtitle — fades in with a brief delay so it lands after the title */
+@keyframes pipeline-sub-fade{
+  0%   { opacity:0; transform:translateY(14px); }
+  100% { opacity:1; transform:translateY(0); }
+}/* ─────────────────────────────────────────
+   SECTION DEFAULTS
+   ───────────────────────────────────────── */
+.section{padding:120px 0}
+.section--light{background:var(--paper);color:var(--text)}
+.section--cream{background:#ffffff;color:var(--text)}
+.section--dark{background:#6ba1d4;color:#fff}
+
+/* ── CHALLENGE */
+.challenge__inner{
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:32px;                     /* tighter — pulls the body copy closer to the $41K box */
+  align-items:start;
+  margin-bottom:64px;
+}
+.challenge__copy{display:flex;flex-direction:column}
+.challenge__copy h2{margin-bottom:18px}
+.challenge__copy .lead{margin:0}
+/* Challenge body lead — same Crimson Pro italic editorial style as the hero lead */
+.challenge__copy .lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.3rem,1.55vw,1.48rem);
+  color:#0a0a0a;
+  line-height:1.5;
+  letter-spacing:.003em;
+  max-width:56ch;
+}
+.challenge__copy .lead em{font-style:italic;color:#4366d8}
+/* Right-align the $41K box, top-aligned with the headline (same starting level) */
+.challenge__stat{
+  justify-self:end;
+  width:100%;
+  max-width:380px;
+}
+/* Push the box down so its top aligns with the headline (which sits below the puzzle icon) */
+.challenge__stat .stat-big{margin-top:110px}
+/* Puzzle icon — sits above the "Why Do 90% of Drugs Fail" headline */
+.challenge__icon{
+  width:88px;
+  height:88px;
+  margin:0 0 22px;
+  filter:drop-shadow(0 8px 22px rgba(67,102,216,.18));
+}
+.challenge__icon svg{width:100%;height:100%;display:block}
+/* Challenge, Approach, Why-ClinOmics, AND Address headlines — same editorial Garamond style */
+.challenge__title,
+.approach__head h2,
+.why__inner h2,
+.address__head h2{
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+  font-weight:600;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.1;
+  letter-spacing:-.014em;
+  color:#0a0a0a;
+}
+/* Challenge italic em — copper-amber gradient */
+.challenge__title em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#f5a623 0%,#d97e3d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}/* Approach italic em — hero image sky-blue */
+.approach__head h2 em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4d8bc0 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#6ba1d4;            /* fallback */
+}
+/* Address italic em ("Molecular Truth") — sky-blue → indigo gradient */
+.address__head h2 em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#4366d8;
+}
+/* ── ADDRESS section: How ClinOmicsAI addresses each driver of trial failure */
+.address__head{max-width:820px;margin:0 auto 56px;text-align:center}
+.address__head h2{margin-bottom:18px;margin-left:auto;margin-right:auto}
+.address__head .address__lead{margin-left:auto;margin-right:auto;
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.3rem,1.55vw,1.48rem);
+  color:#2a3550;
+  line-height:1.55;
+  letter-spacing:.003em;
+  max-width:64ch;
+  margin:0;
+}
+.address__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+/* ── Address cards — Lockwood-style: image with overlaid title at top, white description below */
+.address-card{
+  position:relative;
+  background:#ffffff;
+  border:none;
+  border-radius:28px;
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 10px 40px -10px rgba(67,102,216,.22);
+  transition:transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s cubic-bezier(.22,.61,.36,1);
+}
+.address-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 54px -10px rgba(67,102,216,.32);
+}
+/* Top media block — full 16:9 image with title overlay */
+.address-card__media{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+}
+.address-card__img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .9s cubic-bezier(.22,.61,.36,1);
+}
+.address-card:hover .address-card__img{transform:scale(1.05)}
+/* Title — centered overlay at the bottom of the image */
+.address-card__title{
+  position:absolute;
+  inset:0;
+  margin:0;
+  padding:24px 28px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  text-align:center;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:clamp(1.65rem,2.4vw,2.05rem);
+  line-height:1.16;
+  letter-spacing:-.008em;
+  color:#ffffff;
+  background:linear-gradient(180deg, transparent 0%, rgba(15,40,80,0) 35%, rgba(15,40,80,.45) 75%, rgba(15,40,80,.78) 100%);
+  text-shadow:0 2px 14px rgba(0,0,0,.45);
+  pointer-events:none;
+}
+/* Bottom body — white description block, centered text */
+.address-card__body{
+  padding:36px 32px 40px;
+  background:#ffffff;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.address-card__body p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.15rem;
+  line-height:1.6;
+  color:#4366d8;
+  text-align:center;
+  margin:0;
+  max-width:36ch;
+  letter-spacing:.003em;
+}
+.address-card__body p em{font-style:italic;font-weight:600;color:#d97e3d}
+@media (max-width:900px){
+  .address__grid{grid-template-columns:1fr;gap:18px}
+}
+/* Approach lead — solid black, left-aligned (already left in the head block) */
+.approach__head .lead{color:#0a0a0a}
+
+/* ── WHY CLINOMICSAI section */
+.why__inner{
+  max-width:920px;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:18px;
+}.why__inner h2{margin:0}
+/* Why italic em — same sky-blue gradient as the Approach headline */
+.why__inner h2 em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4d8bc0 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#6ba1d4;
+}
+.why__lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.18rem,1.4vw,1.35rem);
+  color:#2a3550;
+  line-height:1.55;
+  letter-spacing:.003em;
+  max-width:62ch;
+  margin:0;
+}
+/* $41K box — initial styling: clean white-to-off-white gradient with copper accent stripe */
+.stat-big{
+  position:relative;
+  background:linear-gradient(160deg,#ffffff 0%,#f4f6fb 100%);
+  border:1px solid rgba(67,102,216,.14);
+  border-radius:12px;
+  padding:26px 26px 24px;
+  box-shadow:0 2px 6px rgba(67,102,216,.06),0 18px 36px -20px rgba(67,102,216,.22);
+  overflow:hidden;
+}
+.stat-big::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  width:46px;height:3px;
+  background:linear-gradient(90deg,#f5a623,#d97e3d);
+  border-radius:0 0 3px 0;
+}
+/* Puzzle piece removed from $41K box per design */
+.stat-big__puzzle{display:none}
+.stat-big__num{
+  font-family:"Playfair Display", Georgia, serif;
+  font-weight:600;
+  font-size:clamp(2.8rem,4.2vw,3.6rem);
+  line-height:1;
+  background:linear-gradient(90deg,#f5a623 0%,#d97e3d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:block;
+  letter-spacing:-.02em;
+  margin-bottom:10px;
+}
+.stat-big__caption{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:600;
+  font-size:1.16rem;
+  line-height:1.3;
+  color:#0a0a0a;
+  margin:0 0 10px;
+  letter-spacing:-.005em;
+}
+.stat-big__body{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-size:1.04rem;
+  color:#4f5b73;
+  margin:0;
+  line-height:1.5;
+  letter-spacing:.003em;
+}
+
+.challenge__cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+/* Problem cards — white, generous with breathing room for the puzzle icon at top-left */
+.problem-card{
+  position:relative;
+  background:#ffffff;
+  border:1px solid rgba(67,102,216,.12);
+  border-radius:14px;
+  padding:104px 36px 38px;        /* top-104px = puzzle (80) + 24px breathing space before h3 */
+  color:#0a0a0a;
+  overflow:hidden;
+  min-height:280px;
+  box-shadow:
+    0 2px 6px rgba(67,102,216,.06),
+    0 22px 44px -22px rgba(67,102,216,.22);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.problem-card:hover{
+  transform:translateY(-5px);
+  box-shadow:
+    0 4px 10px rgba(67,102,216,.08),
+    0 32px 58px -22px rgba(67,102,216,.32);
+}
+/* Symbol icon removed from problem cards per design */
+.problem-card__icon{display:none}
+/* Missing-puzzle piece in the top-LEFT corner — sky-blue, matches the $41K box piece */
+.problem-card__puzzle{
+  position:absolute;
+  top:0;left:0;
+  width:80px;height:80px;
+  pointer-events:none;
+  z-index:2;
+}
+.problem-card__puzzle svg{width:100%;height:100%;display:block}
+/* Icon symbols (×, !, ↓) removed from problem cards — only the puzzle piece remains as a visual cue */
+.problem-card__icon,
+.problem-card__icon--red,
+.problem-card__icon--amber,
+.problem-card__icon--blue{display:none}
+.problem-card h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.7rem;
+  font-weight:700;
+  color:#0a0a0a;
+  margin:0 0 14px;
+  letter-spacing:-.006em;
+  line-height:1.2;
+  position:relative;z-index:2;
+}
+/* Subtext — copper-amber gradient matching the "Explore Our Technology" button */
+.problem-card p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:1.18rem;
+  background:none;
+  -webkit-background-clip:initial;
+  background-clip:initial;
+  -webkit-text-fill-color:#4366d8;
+  color:#4366d8;
+  margin:0;
+  line-height:1.48;
+  letter-spacing:.003em;
+  position:relative;z-index:2;
+}
+/* (Puzzle SVG retained — the X / warning / down-arrow icons stay hidden via .problem-card__icon { display: none }) */
+
+/* ── APPROACH */
+.approach__head{text-align:left;max-width:920px;margin:0 0 64px}
+.approach__head .lead{margin:0;text-align:left}
+/* Leadership page: close the gap between the centered head and the leader cards below */
+#leadership-head{padding-bottom:0}
+#leadership-head .approach__head--centered{margin-bottom:0}
+.section--leadership--light{padding-top:48px}
+/* Pipeline page: close the gap between the centered head and the trial table below.
+   Scoped via :has() so the rule fires only when the #pipeline section is on the page. */
+body:has(#pipeline) .page-header--white{padding-bottom:0}
+body:has(#pipeline) .page-header--white .approach__head--centered{margin-bottom:0}
+#pipeline{padding-top:48px}
+
+/* Technology page: tighten the vertical spacing between sections.
+   Scoped via :has() so it only fires on pages containing the #framework section (technology.html). */
+body:has(#framework) .section{padding:72px 0}
+/* First section on technology.html — extra padding-top so the title clears the fixed nav with comfortable breathing room */
+body:has(#framework) #approach{padding-top:120px}
+
+/* Homepage: tighten the vertical spacing between sections.
+   Scoped via :has() so it only fires on pages containing the #address section (index.html). */
+body:has(#address) .section{padding:72px 0}
+
+/* ── HOMEPAGE SECTION KICKERS — elegant flanking-line treatment with copper-amber color */
+.home-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:22px;
+  font-family:var(--mono);
+  font-size:1.05rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:#d97e3d;
+  opacity:1 !important;
+  margin:0 0 24px;
+  animation:home-kicker-fade .8s cubic-bezier(.22,.61,.36,1) both;
+}
+.home-kicker::before,
+.home-kicker::after{
+  content:"";
+  display:inline-block;
+  width:54px;
+  height:2px;
+  background:linear-gradient(90deg,transparent 0%,#d97e3d 40%,#f5a623 100%);
+  border-radius:2px;
+}
+.home-kicker::after{
+  background:linear-gradient(90deg,#f5a623 0%,#d97e3d 60%,transparent 100%);
+}
+@keyframes home-kicker-fade{
+  from{ opacity:0; transform:translateY(12px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+
+/* Headline entrance animation for the homepage section heads */
+#address .challenge__title,
+#platform-overview .overview__head h2,
+#team-pipeline-overview .overview__head h2{
+  animation:home-head-rise 1s cubic-bezier(.22,.61,.36,1) .15s both;
+}
+@keyframes home-head-rise{
+  from{ opacity:0; transform:translateY(20px) scale(.985); }
+  to  { opacity:1; transform:translateY(0) scale(1);     }
+}
+
+/* Lead paragraph entrance for the homepage section heads */
+#address .address__lead,
+#platform-overview .overview__head .lead,
+#team-pipeline-overview .overview__head .lead{
+  animation:home-lead-fade 1s cubic-bezier(.22,.61,.36,1) .35s both;
+}
+@keyframes home-lead-fade{
+  from{ opacity:0; transform:translateY(14px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .home-kicker,
+  #address .challenge__title,
+  #platform-overview .overview__head h2,
+  #team-pipeline-overview .overview__head h2,
+  #address .address__lead,
+  #platform-overview .overview__head .lead,
+  #team-pipeline-overview .overview__head .lead{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* ── PLATFORM OVERVIEW (homepage teaser of the three technology sections) */
+.overview__head{text-align:center;max-width:820px;margin:0 auto 56px}
+.overview__head h2{margin-bottom:18px}
+/* Section leads on Platform Overview + Behind the Platform — same editorial Crimson Pro italic voice as the Address lead */
+.overview__head .lead{
+  margin:0 auto;
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.3rem,1.55vw,1.48rem);
+  color:#2a3550;
+  line-height:1.5;
+  letter-spacing:.003em;
+}
+.overview__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+/* ── PREMIUM OVERVIEW CARDS — vibrant theme-colored accents, gradient titles, glowing hover, circular CTA arrow */
+.overview-card{
+  position:relative;
+  background:#ffffff;
+  border:1.5px solid rgba(67,102,216,.08);
+  border-radius:22px;
+  padding:48px 34px 32px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:
+    0 2px 6px rgba(15,40,80,.04),
+    0 22px 60px -28px rgba(67,102,216,.22);
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),
+             box-shadow .5s cubic-bezier(.22,.61,.36,1),
+             border-color .5s cubic-bezier(.22,.61,.36,1);
+}
+/* Top accent strip — expands width on hover */
+.overview-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:50%;
+  height:4px;
+  border-radius:0 0 8px 8px;
+  transition:width .5s cubic-bezier(.22,.61,.36,1), height .3s var(--ease);
+  z-index:2;
+}
+/* Soft tinted radial glow in the corner — fades in on hover */
+.overview-card::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  right:-30%;
+  width:80%;
+  height:80%;
+  border-radius:50%;
+  opacity:0;
+  filter:blur(50px);
+  transition:opacity .6s var(--ease);
+  pointer-events:none;
+  z-index:0;
+}
+.overview-card:hover{
+  transform:translateY(-10px);
+  border-color:transparent;
+}
+.overview-card:hover::before{
+  width:82%;
+  height:5px;
+}
+.overview-card:hover::after{ opacity:.5 }
+
+/* Make the entire card clickable + keep content above the radial glow */
+.overview-card *{position:relative; z-index:1}
+.overview-card__link{position:static}
+.overview-card__link::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+}
+.overview-card__no{display:none}
+
+/* Title */
+.overview-card h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.7rem;
+  font-weight:700;
+  color:#0a0a0a;
+  margin:0 0 14px;
+  letter-spacing:-.008em;
+  line-height:1.18;
+  transition:color .4s var(--ease);
+}
+
+/* Description */
+.overview-card > p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.15rem;
+  color:#2a3550;
+  margin:0 0 24px;
+  line-height:1.6;
+  flex:1;
+}
+
+/* CTA link */
+.overview-card__link{
+  font-family:"Inter", sans-serif;
+  font-size:1.05rem;
+  font-weight:700;
+  text-decoration:none;
+  padding-top:16px;
+  border-top:1px solid rgba(67,102,216,.1);
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  transition:color .3s var(--ease), border-color .3s var(--ease);
+}
+.overview-card__link em{
+  font-style:normal;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:1.1rem;
+  transition:background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+}
+.overview-card:hover .overview-card__link em{transform:translateX(4px) scale(1.06)}
+
+/* ── Card 1 — Our Approach (sky-blue → indigo theme) */
+.overview__grid .overview-card:nth-child(1)::before{
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+}
+.overview__grid .overview-card:nth-child(1)::after{
+  background:radial-gradient(circle,#4366d8 0%,transparent 70%);
+}
+.overview__grid .overview-card:nth-child(1):hover{
+  box-shadow:
+    0 4px 10px rgba(67,102,216,.08),
+    0 40px 80px -22px rgba(67,102,216,.55);
+}
+.overview__grid .overview-card:nth-child(1):hover h3{
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#4366d8;
+}
+.overview__grid .overview-card:nth-child(1) .overview-card__link{color:#4366d8}
+.overview__grid .overview-card:nth-child(1) .overview-card__link em{background:rgba(67,102,216,.1); color:#4366d8}
+.overview__grid .overview-card:nth-child(1):hover .overview-card__link em{background:#4366d8; color:#ffffff}
+
+/* ── Card 2 — TEMPO™ Platform (copper-amber theme) */
+.overview__grid .overview-card:nth-child(2)::before{
+  background:linear-gradient(90deg,#f5a623 0%,#d97e3d 100%);
+}
+.overview__grid .overview-card:nth-child(2)::after{
+  background:radial-gradient(circle,#d97e3d 0%,transparent 70%);
+}
+.overview__grid .overview-card:nth-child(2):hover{
+  box-shadow:
+    0 4px 10px rgba(217,126,61,.1),
+    0 40px 80px -22px rgba(217,126,61,.55);
+}
+.overview__grid .overview-card:nth-child(2):hover h3{
+  background:linear-gradient(90deg,#f5a623 0%,#d97e3d 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#d97e3d;
+}
+.overview__grid .overview-card:nth-child(2) .overview-card__link{color:#d97e3d}
+.overview__grid .overview-card:nth-child(2) .overview-card__link em{background:rgba(217,126,61,.12); color:#d97e3d}
+.overview__grid .overview-card:nth-child(2):hover .overview-card__link em{background:#d97e3d; color:#ffffff}
+
+/* ── Card 3 — How We Deploy It (violet → magenta theme based on #A95EA3) */
+.overview__grid .overview-card:nth-child(3)::before{
+  background:linear-gradient(90deg,#c084d1 0%,#A95EA3 100%);
+}
+.overview__grid .overview-card:nth-child(3)::after{
+  background:radial-gradient(circle,#A95EA3 0%,transparent 70%);
+}
+.overview__grid .overview-card:nth-child(3):hover{
+  box-shadow:
+    0 4px 10px rgba(169,94,163,.1),
+    0 40px 80px -22px rgba(169,94,163,.55);
+}
+.overview__grid .overview-card:nth-child(3):hover h3{
+  background:linear-gradient(90deg,#c084d1 0%,#A95EA3 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#A95EA3;
+}
+.overview__grid .overview-card:nth-child(3) .overview-card__link{color:#A95EA3}
+.overview__grid .overview-card:nth-child(3) .overview-card__link em{background:rgba(169,94,163,.12); color:#A95EA3}
+.overview__grid .overview-card:nth-child(3):hover .overview-card__link em{background:#A95EA3; color:#ffffff}
+@media (max-width:900px){
+  .overview__grid{grid-template-columns:1fr;gap:18px}
+}
+
+/* ── TEAM + PIPELINE OVERVIEW (homepage teasers linking to leadership.html and pipeline.html) */
+.team-pipeline__grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+}
+.intro-card{
+  position:relative;
+  background:linear-gradient(180deg,#ffffff 0%,#f4f6fb 100%);
+  border:1px solid rgba(67,102,216,.14);
+  border-radius:14px;
+  padding:40px 36px 32px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 18px 38px -22px rgba(67,102,216,.22);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.intro-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(67,102,216,.3);
+  box-shadow:0 4px 10px rgba(67,102,216,.08), 0 28px 52px -22px rgba(67,102,216,.32);
+}
+.intro-card h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.85rem;
+  font-weight:700;
+  color:#4366d8;
+  margin:0 0 16px;
+  letter-spacing:-.008em;
+  line-height:1.18;
+}
+.intro-card > p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.15rem;
+  color:#2a3550;
+  margin:0 0 24px;
+  line-height:1.55;
+  flex:1;
+}
+.intro-card > p strong{
+  font-weight:700;
+  color:#0a0a0a;
+  font-style:normal;
+}
+.intro-card__link{
+  font-family:"Inter", sans-serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:#4366d8;
+  text-decoration:none;
+  padding-top:16px;
+  border-top:1px solid rgba(67,102,216,.18);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:color .3s var(--ease), gap .3s var(--ease), border-color .3s var(--ease);
+}
+.intro-card__link em{
+  font-style:normal;
+  font-weight:700;
+  transition:transform .3s var(--ease);
+  display:inline-block;
+}
+.intro-card:hover .intro-card__link{color:#6ba1d4}
+.intro-card:hover .intro-card__link em{transform:translateX(5px)}
+@media (max-width:900px){
+  .team-pipeline__grid{grid-template-columns:1fr;gap:18px}
+}
+
+/* Leader cards — automatic entrance animation on page load (independent of IntersectionObserver).
+   First card starts at .25s, second at .5s, so they cascade naturally as the page settles. */
+.section--leadership--light .leader{
+  opacity:0;
+  transform:translateY(28px);
+  animation:leader-card-enter .9s cubic-bezier(.22,.61,.36,1) both;
+}
+.section--leadership--light .leader:nth-child(1){animation-delay:.25s}
+.section--leadership--light .leader:nth-child(2){animation-delay:.5s}
+@keyframes leader-card-enter{
+  from{ opacity:0; transform:translateY(28px); }
+  to{   opacity:1; transform:translateY(0);    }
+}
+/* Respect users who prefer reduced motion — skip the entrance entirely */
+@media (prefers-reduced-motion: reduce){
+  .section--leadership--light .leader{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+}
+/* Centered variant used on technology.html — Approach block sits center-aligned */
+.approach__head--centered{text-align:center;margin:0 auto 64px;max-width:920px}
+.approach__head--centered h2{margin-left:auto;margin-right:auto;max-width:24ch}
+/* Editorial lead — Crimson Pro italic, larger, with a soft sky-blue em accent */
+.approach__head--centered .lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.22rem,1.5vw,1.42rem);
+  line-height:1.55;
+  letter-spacing:.005em;
+  color:#2a3550;
+  max-width:62ch;
+  margin:0 auto;
+  text-align:center;
+}
+.approach__head--centered .lead em{
+  font-style:italic;
+  font-weight:600;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#4366d8;        /* fallback */
+}
+/* Button-style kicker — solid hero sky-blue, three rounded corners + square bottom-left */
+.kicker--btn{
+  display:inline-block;
+  background:#6ba1d4;
+  color:#ffffff;
+  font-family:"Inter", sans-serif;
+  font-weight:700;
+  font-size:.82rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:9px 20px 9px 16px;
+  border-radius:24px 24px 24px 0;     /* top-left, top-right, bottom-right rounded — bottom-left square */
+  box-shadow:0 0 0 1px rgba(45,90,140,.3), 0 10px 24px -10px rgba(45,90,140,.5);
+  margin:0 0 18px;
+}
+.approach__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  max-width:1620px;     /* widened further so 16:9 cards are slightly taller */
+}
+/* Value cards (Our Approach) — solid hero sky-blue with white text */
+/* Value cards — 3D flip on hover. aspect-ratio matches the 16:9 image so it fits with zero gaps. */
+.value-card{
+  background:transparent;
+  border:none;
+  padding:0;
+  aspect-ratio:16/9;
+  min-height:0;
+  perspective:1400px;
+  position:relative;
+  box-shadow:none;
+}
+.value-card__icon{display:none}
+
+.value-card__flipper{
+  position:relative;
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  transition:transform .8s cubic-bezier(.22,.61,.36,1);
+}
+.value-card:hover .value-card__flipper{transform:rotateY(180deg)}
+
+.value-card__face{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:inherit;
+  border-radius:14px;
+  overflow:hidden;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+/* FRONT face — sky-blue with the entire image fully visible + title centered on the image */
+.value-card__face--front{
+  background:#6ba1d4;
+  border:1px solid rgba(35,75,125,.3);
+  box-shadow:0 2px 6px rgba(35,75,125,.14), 0 22px 44px -22px rgba(35,75,125,.45);
+}
+/* Image fills the entire front face — no gaps, no letterbox */
+.value-card__face--front .value-card__media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+.value-card__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;          /* image fills the card edge-to-edge */
+  display:block;
+  transition:transform 1.2s cubic-bezier(.22,.61,.36,1);
+}
+.value-card__media h3{
+  position:absolute;
+  inset:0;
+  margin:0;
+  padding:24px 28px;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.5rem;
+  line-height:1.16;
+  letter-spacing:-.006em;
+  color:#ffffff;
+  background:radial-gradient(ellipse at center, rgba(15,40,80,.45) 0%, rgba(15,40,80,.2) 60%, rgba(15,40,80,0) 100%);
+  text-shadow:0 2px 12px rgba(0,0,0,.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+/* Stat strip on FRONT face — overlays the bottom of the image (no separate band) */
+.value-card__face--front .value-card__stat{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  margin:0 !important;
+  padding:14px 30px 18px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#0a0a0a !important;
+  font-size:.96rem;
+  border-top:none;
+  z-index:2;
+}
+.value-card__face--front .value-card__stat strong{color:#0a0a0a;font-weight:700;font-size:1.08rem}
+
+/* BACK face — white with title + description centered (sized for the 16:9 card) */
+.value-card__face--back{
+  transform:rotateY(180deg);
+  background:#ffffff;
+  border:1px solid rgba(67,102,216,.18);
+  box-shadow:0 2px 6px rgba(67,102,216,.08), 0 22px 44px -22px rgba(67,102,216,.32);
+  padding:18px 24px 0;
+  justify-content:center;
+  text-align:center;
+}
+.value-card__face--back h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.22rem;
+  line-height:1.16;
+  letter-spacing:-.006em;
+  color:#0a0a0a;
+  margin:0 0 10px;
+}
+.value-card__description{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:.92rem;
+  line-height:1.44;
+  color:#2a3550;
+  margin:0 0 14px;
+}
+
+/* Stat strip — black text on white, sits at the bottom of BOTH faces */
+.value-card__stat{
+  margin:0 -30px !important;
+  padding:18px 30px 22px;
+  background:#ffffff;
+  color:#0a0a0a !important;
+  font-size:.98rem;
+  border-top:1px solid rgba(67,102,216,.18);
+  letter-spacing:.005em;
+}
+.value-card__face--front .value-card__stat{
+  margin:0 !important;
+  border-top:none;
+}
+.value-card__stat strong{
+  color:#0a0a0a;
+  font-weight:700;
+  font-size:1.1rem;
+}
+
+/* ── PLATFORM (dark) */
+.platform__head{text-align:center;max-width:820px;margin:0 auto 64px}
+.platform__head .lead{margin:0 auto}
+/* Platform Workflow headline + subtitle — editorial Cormorant Garamond + Crimson Pro italic */
+.platform__head h2{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:clamp(2.3rem,4.8vw,3.8rem);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  color:#0a0a0a;
+  margin:0 0 18px;
+}
+.platform__head h2 em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#4366d8;
+}
+.platform__head .lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.18rem,1.4vw,1.35rem);
+  color:#2a3550;
+  line-height:1.55;
+  letter-spacing:.003em;
+  max-width:64ch;
+}
+.platform__steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-bottom:64px;
+}
+.step-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.025) 0%,rgba(255,255,255,.015) 100%);
+  border:1px solid rgba(80,169,237,.18);
+  border-radius:12px;
+  padding:28px 24px;
+  color:rgba(255,255,255,.85);
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.step-card::after{
+  content:"";
+  position:absolute;
+  top:-40%;right:-40%;
+  width:140px;height:140px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(80,169,237,.2),transparent 70%);
+  opacity:0;
+  transition:opacity .4s var(--ease);
+  pointer-events:none;
+}
+.step-card:hover{transform:translateY(-4px);border-color:rgba(80,169,237,.5);box-shadow:0 24px 50px -22px rgba(80,169,237,.4)}
+.step-card:hover::after{opacity:1}
+.step-card__num{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.22em;
+  color:var(--cyan);
+  text-transform:uppercase;
+  margin:0 0 12px;
+}
+.step-card h3{font-family:var(--serif);font-size:1.18rem;color:#fff;margin:0 0 12px;font-weight:400;line-height:1.25}
+.step-card p{font-size:.92rem;line-height:1.55;color:rgba(255,255,255,.7);margin:0 0 16px}
+.step-card__tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:.78rem;
+  color:var(--cyan-2);
+  background:rgba(80,169,237,.1);
+  border:1px solid rgba(80,169,237,.25);
+  padding:6px 12px;
+  border-radius:6px;
+  letter-spacing:.01em;
+}
+
+/* Molecure Report */
+.platform__report{
+  background:linear-gradient(180deg,#ffffff 0%,#f4f6fb 100%);
+  border:1px solid rgba(67,102,216,.14);
+  border-radius:16px;
+  padding:44px 44px 40px;
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:48px;
+  align-items:start;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 22px 44px -22px rgba(67,102,216,.22);
+}
+.report__copy h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.85rem;
+  line-height:1.16;
+  letter-spacing:-.012em;
+  color:#0a0a0a;
+  margin:0 0 16px;
+}
+.report__copy p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.08rem;
+  color:#2a3550;
+  line-height:1.55;
+  margin:0;
+  max-width:42ch;
+}
+.report__features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:22px}
+.report__features li{display:flex;gap:18px;align-items:flex-start}
+.report__icon{
+  width:44px;height:44px;flex-shrink:0;
+  border-radius:10px;
+  background:linear-gradient(135deg,#4366d8 0%,#6ba1d4 100%);
+  color:#ffffff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(67,102,216,.28);
+}
+.report__icon svg{width:20px;height:20px}
+.report__features strong{
+  display:block;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.18rem;
+  letter-spacing:-.006em;
+  color:#0a0a0a;
+  margin-bottom:4px;
+}
+.report__features p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:.96rem;
+  color:#2a3550;
+  margin:0;
+  line-height:1.5;
+}
+
+/* ── FRAMEWORK / SOLUTIONS */
+.framework__inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.framework__copy{margin-top:160px}     /* pushes the headline + lead further below */
+.framework__copy h2{margin-bottom:18px}
+/* Section title centered at the top — editorial display style with entrance animation */
+.framework__kicker-wrap{text-align:center;margin:0 auto 56px}
+/* Title — same font style as "Platform Workflow": Cormorant Garamond 700, large, tight tracking */
+.framework__kicker{
+  display:inline-block;
+  margin:0;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:clamp(2.3rem,4.8vw,3.8rem);
+  line-height:1.08;
+  letter-spacing:-.015em;
+  color:#0a0a0a;
+  animation:framework-title-enter 1s cubic-bezier(.22,.61,.36,1) .1s both;
+}
+/* "How" — solid black, no animation */
+.framework__kicker-static{color:#0a0a0a;font-style:normal}
+/* "We Deploy the Platform" — italic with shimmering 5-color gradient */
+.framework__kicker em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#4366d8;            /* fallback */
+}
+@keyframes framework-title-enter{
+  from{ opacity:0; transform:translateY(28px) scale(.97); }
+  to  { opacity:1; transform:translateY(0) scale(1);    }
+}
+@keyframes framework-title-shimmer{
+  0%   { background-position:0% 50%; }
+  100% { background-position:200% 50%; }
+}
+@media (prefers-reduced-motion:reduce){
+  .framework__kicker{animation:none}
+  .framework__kicker em{
+    animation:none;
+    background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+    background-size:100% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+  }
+}
+/* ── Framework section ("How We Deploy the Platform") — editorial typography */
+.framework__copy .kicker{
+  font-family:var(--mono);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#d97e3d;
+  margin:0 0 18px;
+  opacity:1;
+}
+.framework__copy h2{
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+  font-weight:700;
+  font-size:clamp(2.1rem,4.2vw,3.2rem);
+  line-height:1.1;
+  letter-spacing:-.012em;
+  color:#0a0a0a;
+}
+.framework__copy h2 em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#4366d8;
+}
+.framework__copy .lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.15rem,1.35vw,1.3rem);
+  color:#2a3550;
+  line-height:1.55;
+  letter-spacing:.003em;
+  max-width:50ch;
+}
+.framework__phases{display:flex;flex-direction:column;gap:18px}
+.phase-card{
+  position:relative;
+  background:linear-gradient(180deg,#ffffff 0%,#f4f6fb 100%);
+  border:1px solid rgba(67,102,216,.16);
+  border-radius:14px;
+  padding:28px 30px;
+  box-shadow:var(--shadow-1);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.phase-card{
+  padding:24px 28px;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 18px 38px -22px rgba(67,102,216,.2);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.phase-card:hover{
+  transform:translateX(6px);
+  border-color:rgba(67,102,216,.3);
+  box-shadow:0 4px 10px rgba(67,102,216,.1), 0 28px 52px -22px rgba(67,102,216,.32);
+}
+.phase-card__no{
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 10px;
+  font-weight:500;
+}
+.phase-card__no--accent{color:#d97e3d}
+.phase-card h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.42rem;
+  font-weight:700;
+  color:#0a0a0a;
+  margin:0 0 10px;
+  letter-spacing:-.006em;
+  line-height:1.2;
+}
+.phase-card p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.02rem;
+  color:#2a3550;
+  margin:0;
+  line-height:1.55;
+}
+.phase-card p em{color:#4366d8;font-style:italic;font-weight:600}
+/* Asset Rescue — full-width band at the bottom of the section */
+.framework__rescue-wrap{margin-top:64px}
+.phase-card--rescue{
+  background:linear-gradient(135deg,#1f3a8a 0%,#4366d8 100%);
+  border:1px solid rgba(217,126,61,.4);
+  border-radius:16px;
+  padding:48px 56px;
+  box-shadow:0 4px 12px rgba(31,58,138,.18), 0 36px 70px -22px rgba(31,58,138,.6);
+}
+.phase-card--rescue h3{
+  font-size:2.2rem;
+  margin:0 0 16px;
+  letter-spacing:-.012em;
+  line-height:1.1;
+}
+.phase-card--rescue p{
+  font-size:1.12rem;
+  line-height:1.65;
+  max-width:80ch;
+}
+.phase-card--rescue .phase-card__no{
+  font-size:.86rem;
+  margin-bottom:16px;
+  margin-top:18px;
+}
+.phase-card--rescue .phase-card__no{color:#f5a623}
+.phase-card--rescue h3{color:#ffffff}
+.phase-card--rescue p{color:rgba(255,255,255,.92)}
+.phase-card--rescue p em{color:#f5a623;font-style:italic;font-weight:600}.pipeline__table-wrap{
+  background:var(--paper);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow-1);
+  border:1px solid var(--rule);
+  margin-bottom:48px;
+}
+.pipeline__table{width:100%;border-collapse:collapse}
+.pipeline__table thead{background:var(--ink);color:#fff}
+.pipeline__table th{
+  text-align:left;
+  font-family:var(--mono);
+  font-size:.92rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:20px 22px;
+  color:rgba(255,255,255,.85);
+}
+.pipeline__table td{
+  padding:18px 22px;
+  border-top:1px solid var(--rule);
+  font-size:.95rem;
+  color:var(--text);
+}
+.pipeline__table tbody tr:hover{background:rgba(80,169,237,.04)}
+
+/* ── Platform Workflow table — editorial typography, attractive colors */
+.platform__table-wrap{margin-top:0}
+.platform__table-wrap .pipeline__table{
+  background:#ffffff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 18px 38px -22px rgba(67,102,216,.22);
+}
+.platform__table-wrap .pipeline__table thead{
+  background:linear-gradient(135deg,#1f3a8a 0%,#4366d8 100%);
+}
+.platform__table-wrap .pipeline__table thead th{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-size:1.05rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-transform:none;
+  color:#ffffff;
+  padding:22px 24px;
+}
+.platform__table-wrap .pipeline__table td{
+  padding:24px 24px;
+  border-top:1px solid rgba(67,102,216,.12);
+  vertical-align:middle;
+}
+.platform__table-wrap .pipeline__table tbody tr:hover{
+  background:linear-gradient(90deg,rgba(67,102,216,.04) 0%,rgba(107,161,212,.06) 100%);
+}
+.platform__table-wrap .pipeline__table td:first-child strong{
+  font-family:"Playfair Display", Georgia, serif;
+  font-weight:700;
+  font-size:1.85rem;
+  background:linear-gradient(135deg,#f5a623 0%,#d97e3d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#d97e3d;
+  letter-spacing:-.02em;
+}
+.platform__table-wrap .pipeline__table td:nth-child(2){
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.15rem;
+  color:#0a0a0a;
+  letter-spacing:-.005em;
+  line-height:1.25;
+}
+.platform__table-wrap .pipeline__table td:nth-child(3){
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1rem;
+  color:#2a3550;
+  line-height:1.5;
+  max-width:38ch;
+}
+.platform__table-wrap .pipeline__table td:last-child .pill{
+  display:inline-block;
+  background:transparent;
+  color:#d97e3d;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-style:italic;
+  font-weight:700;
+  font-size:1.08rem;
+  letter-spacing:-.005em;
+  padding:0;
+  border-radius:0;
+  border-bottom:2px solid rgba(217,126,61,.35);
+  box-shadow:none;
+  text-shadow:0 1px 0 rgba(255,255,255,.6);
+}
+
+/* ── PIPELINE: page-load entrance animations + header text shimmer */
+
+/* Table wrapper — gentle fade-up */
+#pipeline .pipeline__table-wrap{
+  opacity:0;
+  transform:translateY(20px);
+  animation:pipeline-wrap-enter .8s cubic-bezier(.22,.61,.36,1) .15s both;
+}
+@keyframes pipeline-wrap-enter{
+  from{ opacity:0; transform:translateY(20px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+
+/* Each trial row cascades in one after another */
+#pipeline .pipeline__table tbody tr{
+  opacity:0;
+  transform:translateY(12px);
+  animation:pipeline-row-enter .55s cubic-bezier(.22,.61,.36,1) both;
+}
+#pipeline .pipeline__table tbody tr:nth-child(1){animation-delay:.5s}
+#pipeline .pipeline__table tbody tr:nth-child(2){animation-delay:.62s}
+#pipeline .pipeline__table tbody tr:nth-child(3){animation-delay:.74s}
+#pipeline .pipeline__table tbody tr:nth-child(4){animation-delay:.86s}
+#pipeline .pipeline__table tbody tr:nth-child(5){animation-delay:.98s}
+@keyframes pipeline-row-enter{
+  from{ opacity:0; transform:translateY(12px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+
+/* Table header text — continuous subtle text-shadow pulse so the labels feel alive */
+.pipeline__table thead th{
+  animation:pipeline-th-glow 4s ease-in-out infinite;
+}
+@keyframes pipeline-th-glow{
+  0%,100%{ text-shadow:0 0 0 transparent; color:rgba(255,255,255,.85); }
+  50%    { text-shadow:0 0 12px rgba(159,211,245,.45); color:#ffffff;   }
+}
+
+/* Site cards: staggered entrance only (no continuous float), strong hover lift */
+#pipeline .site-card{
+  opacity:0;
+  animation:pipeline-site-enter .8s cubic-bezier(.22,.61,.36,1) both;
+  transition:transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s cubic-bezier(.22,.61,.36,1), border-color .4s cubic-bezier(.22,.61,.36,1);
+}
+#pipeline .site-card:nth-child(1){animation-delay:1.15s}
+#pipeline .site-card:nth-child(2){animation-delay:1.28s}
+#pipeline .site-card:nth-child(3){animation-delay:1.41s}
+#pipeline .site-card:nth-child(4){animation-delay:1.54s}
+#pipeline .site-card:nth-child(5){animation-delay:1.67s}
+@keyframes pipeline-site-enter{
+  from{ opacity:0; transform:translateY(22px) scale(.98); }
+  to  { opacity:1; transform:translateY(0)    scale(1);   }
+}
+#pipeline .site-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(67,102,216,.32);
+  box-shadow:0 4px 12px rgba(67,102,216,.1), 0 32px 60px -22px rgba(67,102,216,.35);
+}
+#pipeline .site-card:hover .site-card__flag{
+  transform:rotate(-6deg) scale(1.18);
+  filter:drop-shadow(0 4px 12px rgba(67,102,216,.32));
+  transition:transform .35s cubic-bezier(.22,.61,.36,1), filter .35s cubic-bezier(.22,.61,.36,1);
+}
+.site-card__flag{transition:transform .35s cubic-bezier(.22,.61,.36,1), filter .35s cubic-bezier(.22,.61,.36,1)}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  #pipeline .pipeline__table-wrap,
+  #pipeline .pipeline__table tbody tr,
+  #pipeline .site-card{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
+  .pipeline__table thead th{animation:none}
+}
+.pipeline__table td strong{color:var(--ink);font-weight:700;letter-spacing:.02em}
+.pill{
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.pill--active{background:rgba(67,102,216,.18);color:#22a08f}
+.pill--planned{background:rgba(217,161,58,.18);color:#a47a26}
+
+.pipeline__sites{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+}
+.site-card{
+  position:relative;
+  background:var(--paper);
+  border:1px solid rgba(67,102,216,.16);
+  border-radius:14px;
+  padding:28px 20px 24px;
+  text-align:center;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 18px 38px -22px rgba(67,102,216,.18);
+  overflow:hidden;
+}
+/* Decorative accent line that draws in on hover */
+.site-card::after{
+  content:"";
+  position:absolute;
+  left:50%;right:50%;bottom:0;
+  height:2px;
+  background:linear-gradient(90deg,#4366d8 0%,#6ba1d4 100%);
+  border-radius:2px 2px 0 0;
+  transition:left .4s cubic-bezier(.22,.61,.36,1), right .4s cubic-bezier(.22,.61,.36,1);
+}
+.site-card:hover::after{left:0;right:0}
+.site-card__flag{
+  font-size:2.4rem;
+  display:block;
+  margin-bottom:8px;
+  line-height:1;
+  filter:drop-shadow(0 2px 6px rgba(67,102,216,.18));
+}
+/* Country code (US, BR, PH, SA, IN) — plain editorial label in brand indigo (no pill background) */
+/* Country code labels removed from the site cards — markup deleted, kept dead-CSS removed */
+.site-card strong{
+  display:block;
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.18rem;
+  color:#0a0a0a;
+  letter-spacing:-.006em;
+  margin-bottom:6px;
+  transition:color .3s cubic-bezier(.22,.61,.36,1);
+}
+.site-card p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:.95rem;
+  color:#4f5b73;
+  line-height:1.4;
+  letter-spacing:.003em;
+  margin:0;
+}
+.site-card:hover strong{color:#4366d8}
+
+/* ── PARTNER WITH US */
+.partner{
+  position:relative;
+  background:#6ba1d4;
+  overflow:hidden;
+}
+/* Full Partner page (partner.html) — white background + dark text + staggered entrance animations.
+   Scoped via :not(.partner--cta) so it doesn't affect the slim sky-blue CTA banner on the homepage. */
+.partner:not(.partner--cta){
+  background:#ffffff;
+  color:#0a0a0a;
+}
+.partner:not(.partner--cta) .partner__copy .kicker{
+  color:#d97e3d;
+  margin:0 0 18px;
+  opacity:1;
+  animation:partner-fade-up .8s cubic-bezier(.22,.61,.36,1) .1s both;
+}
+.partner:not(.partner--cta) .partner__copy h2{
+  color:#0a0a0a;
+  animation:partner-fade-up .9s cubic-bezier(.22,.61,.36,1) .25s both;
+}
+.partner:not(.partner--cta) .partner__copy h2 em{
+  background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  color:#4366d8;
+}
+/* Lead paragraph — editorial Crimson Pro italic */
+.partner:not(.partner--cta) .partner__copy .lead{
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.18rem,1.4vw,1.35rem);
+  line-height:1.55;
+  letter-spacing:.003em;
+  color:#2a3550;
+  max-width:54ch;
+  animation:partner-fade-up .9s cubic-bezier(.22,.61,.36,1) .4s both;
+}
+/* Meta items — staggered entrance */
+.partner:not(.partner--cta) .partner__meta li{
+  animation:partner-fade-up .7s cubic-bezier(.22,.61,.36,1) both;
+}
+.partner:not(.partner--cta) .partner__meta li:nth-child(1){animation-delay:.55s}
+.partner:not(.partner--cta) .partner__meta li:nth-child(2){animation-delay:.7s}
+/* Meta labels (Corporate Headquarters / Secondary Office) — Cormorant Garamond bold indigo */
+.partner:not(.partner--cta) .partner__meta strong{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.18rem;
+  letter-spacing:-.005em;
+  color:#4366d8;
+  margin-bottom:4px;
+  display:block;
+}
+/* Meta addresses — Crimson Pro italic editorial body */
+.partner:not(.partner--cta) .partner__meta p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:1rem;
+  line-height:1.5;
+  color:#2a3550;
+  letter-spacing:.003em;
+}
+.partner:not(.partner--cta) .partner__dot{
+  background:#4366d8;
+  box-shadow:0 0 12px rgba(67,102,216,.4);
+}
+.partner:not(.partner--cta) .partner__dot--alt{
+  background:#6ba1d4;
+  box-shadow:0 0 12px rgba(107,161,212,.4);
+}
+@keyframes partner-fade-up{
+  from{ opacity:0; transform:translateY(20px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+@keyframes partner-em-shimmer{
+  0%   { background-position:0% 50%; }
+  100% { background-position:200% 50%; }
+}
+@media (prefers-reduced-motion:reduce){
+  .partner:not(.partner--cta) .partner__copy .kicker,
+  .partner:not(.partner--cta) .partner__copy h2,
+  .partner:not(.partner--cta) .partner__copy .lead,
+  .partner:not(.partner--cta) .partner__meta li{
+    animation:none; opacity:1; transform:none;
+  }
+  .partner:not(.partner--cta) .partner__copy h2 em{
+    animation:none;
+    background:linear-gradient(90deg,#6ba1d4 0%,#4366d8 100%);
+    background-size:100% 100%;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+/* Background image removed — show clean hero sky-blue color */
+.partner__bg,
+.partner__bg-overlay{display:none}/* Slim CTA banner variant used on the homepage — full form lives on partner.html */
+.partner--cta{padding:96px 0}
+.partner__cta-inner{
+  position:relative;
+  z-index:1;
+  max-width:780px;
+  margin:0 auto;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+/* "Get in Touch" kicker — same flanking-line style as the home-kickers, tuned for the sky-blue background */
+.partner-cta__kicker{
+  color:#ffffff !important;
+  margin-bottom:24px;
+}
+.partner-cta__kicker::before,
+.partner-cta__kicker::after{
+  background:linear-gradient(90deg,transparent 0%,#ffffff 40%,#f5a623 100%);
+}
+.partner-cta__kicker::after{
+  background:linear-gradient(90deg,#f5a623 0%,#ffffff 60%,transparent 100%);
+}
+/* "Partner With Us" headline — Cormorant Garamond editorial, copper-amber shimmering italic em */
+.partner-cta__title{
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+  font-weight:700 !important;
+  font-size:clamp(2.4rem,4.4vw,3.6rem);
+  line-height:1.1;
+  letter-spacing:-.014em;
+  color:#ffffff;
+  margin:0 0 18px;
+  animation:partner-cta-rise 1s cubic-bezier(.22,.61,.36,1) .15s both;
+}
+.partner-cta__title em{
+  font-style:italic;
+  font-weight:700;
+  background:linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #f5a623 25%,
+    #d97e3d 50%,
+    #f5a623 75%,
+    #ffffff 100%
+  );
+  background-size:200% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:#f5a623;
+  animation:partner-cta-shimmer 5s linear infinite;
+}
+@keyframes partner-cta-rise{
+  from{ opacity:0; transform:translateY(20px) scale(.985); }
+  to  { opacity:1; transform:translateY(0) scale(1);     }
+}
+@keyframes partner-cta-shimmer{
+  0%   { background-position:0% 50%; }
+  100% { background-position:200% 50%; }
+}
+/* Partner CTA lead — editorial Crimson Pro italic in warm pale gold, scoped to the sky-blue Partner banner */
+.partner__cta-inner .lead{
+  margin:0 0 32px;
+  max-width:62ch;
+  text-align:center;
+  font-family:"Crimson Pro", Georgia, serif !important;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.18rem,1.45vw,1.4rem);
+  color:#ffe9b3;
+  line-height:1.5;
+  letter-spacing:.003em;
+  text-shadow:0 1px 14px rgba(15,35,65,.35);
+  animation:partner-cta-fade 1s cubic-bezier(.22,.61,.36,1) .4s both;
+}
+@keyframes partner-cta-fade{
+  from{ opacity:0; transform:translateY(14px); }
+  to  { opacity:1; transform:translateY(0);    }
+}
+.partner__cta-btn{display:inline-flex;animation:partner-cta-fade 1s cubic-bezier(.22,.61,.36,1) .55s both}
+@media (prefers-reduced-motion:reduce){
+  .partner-cta__title,
+  .partner__cta-inner .lead,
+  .partner__cta-btn{
+    animation:none; opacity:1; transform:none;
+  }
+  .partner-cta__title em{
+    animation:none;
+    background:linear-gradient(90deg,#ffffff 0%,#f5a623 100%);
+    background-size:100% 100%;
+    -webkit-background-clip:text;background-clip:text;
+  }
+}
+.partner__bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:.6;
+}
+.partner__bg-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(110deg, rgba(67,102,216,.94) 0%, rgba(67,102,216,.82) 40%, rgba(67,102,216,.55) 70%, rgba(67,102,216,.35) 100%),
+    radial-gradient(40% 60% at 90% 80%, rgba(67,102,216,.12), transparent 65%);
+}
+.partner__inner{position:relative;z-index:1;display:grid;grid-template-columns:.95fr 1.05fr;gap:80px;align-items:start}
+.partner__copy h2{margin-bottom:18px}
+.partner__copy .kicker{color:var(--cyan)}
+.partner__meta{list-style:none;padding:0;margin:32px 0 0;display:flex;flex-direction:column;gap:22px}
+.partner__meta li{display:flex;gap:14px;align-items:flex-start}
+.partner__dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--cyan);
+  flex-shrink:0;margin-top:7px;
+  box-shadow:0 0 12px rgba(80,169,237,.65);
+}
+.partner__dot--alt{background:var(--teal);box-shadow:0 0 12px rgba(67,102,216,.55)}.partner__meta strong{display:block;color:#fff;font-weight:600;font-size:.95rem;margin-bottom:2px}
+.partner__meta p{margin:0;font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* form */
+.pform{
+  background:var(--ink-2);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:34px;
+  box-shadow:0 24px 60px -22px rgba(0,0,0,.5);
+}
+/* Jotform embed variant — clean white container that holds the iframe */
+.pform--jotform{
+  background:#ffffff;
+  border:1px solid rgba(67,102,216,.14);
+  padding:0;
+  box-shadow:0 2px 6px rgba(67,102,216,.06), 0 22px 44px -22px rgba(67,102,216,.22);
+  overflow:hidden;
+}
+.pform--jotform iframe{
+  display:block;
+  width:100%;
+  min-height:640px;
+  border:none;
+}
+.pform__row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.field__label{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.01em}
+.field input,.field select,.field textarea{
+  font-family:inherit;
+  font-size:.95rem;
+  color:#fff;
+  background:var(--ink);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;
+  padding:13px 15px;
+  transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.32)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;
+  border-color:var(--cyan);
+  box-shadow:0 0 0 3px rgba(80,169,237,.18);
+}
+.field select{color:rgba(255,255,255,.6)}
+.field textarea{resize:vertical;min-height:120px}
+.field__error{font-size:.78rem;color:#ff8278;min-height:1em}
+.field.is-invalid input,.field.is-invalid textarea,.field.is-invalid select{border-color:#ff8278}
+.pform__submit{margin-top:8px;width:auto}
+.pform__status{margin:14px 0 0;font-size:.88rem;opacity:0;transition:opacity .2s var(--ease)}
+.pform__status.is-visible{opacity:1}
+.pform__status.is-ok{color:var(--teal)}
+.pform__status.is-error{color:#ff8278}
+
+/* ─────────────────────────────────────────
+   LEADERSHIP TEAM
+   ───────────────────────────────────────── */
+.section--leadership{
+  position:relative;
+  background:var(--ink);
+  color:#fff;
+  overflow:hidden;
+}
+.section--leadership::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("images/about-hero.jpg") center/cover no-repeat;
+  opacity:.16;
+  pointer-events:none;
+}
+.section--leadership::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(45% 60% at 12% 25%, rgba(80,169,237,.18), transparent 65%),
+    radial-gradient(45% 60% at 90% 80%, rgba(67,102,216,.12), transparent 65%),
+    linear-gradient(180deg, var(--ink) 0%, rgba(67,102,216,.86) 50%, var(--ink) 100%);
+  pointer-events:none;
+}.leadership__grid{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+}
+.leader{
+  background:linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.02) 100%);
+  border:1px solid rgba(80,169,237,.22);
+  border-radius:14px;
+  padding:36px 32px 32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:22px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.leader:hover{
+  transform:translateY(-4px);
+  box-shadow:0 24px 50px -22px rgba(80,169,237,.4);
+  border-color:rgba(80,169,237,.5);
+}
+.leader__photo{
+  width:160px;
+  height:160px;
+  flex-shrink:0;
+  border-radius:50%;
+  overflow:hidden;
+  background:var(--ink-2);
+  box-shadow:
+    0 0 0 4px rgba(67,102,216,.85),
+    0 0 0 5px rgba(80,169,237,.4),
+    0 18px 30px -14px rgba(31,58,138,.6);
+  align-self:flex-start;
+}
+.leader__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.leader__body{display:flex;flex-direction:column;width:100%}
+.leader__role{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  margin:0 0 10px;
+}
+.leader h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:1.45rem;
+  line-height:1.2;
+  color:#fff;
+  margin:0 0 6px;
+  letter-spacing:-.012em;
+}
+.leader h3 span{font-size:.78em;color:rgba(255,255,255,.55);font-style:italic;letter-spacing:0}
+.leader__title{
+  font-family:var(--sans);
+  font-size:.86rem;
+  font-weight:500;
+  color:var(--cyan-2);
+  margin:0 0 14px;
+  line-height:1.4;
+}
+.leader__body > p{
+  font-size:.94rem;
+  color:rgba(255,255,255,.78);
+  line-height:1.55;
+  margin:0 0 16px;
+}
+.leader__body > p em{color:var(--cyan-2);font-style:italic;font-weight:500}
+.leader__body > p strong{color:#fff;font-weight:600}
+.leader__credits{
+  list-style:none;
+  padding:14px 0 0;
+  margin:0;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.leader__credits li{
+  position:relative;
+  padding-left:18px;
+  font-size:.84rem;
+  line-height:1.5;
+  color:rgba(255,255,255,.62);
+}
+.leader__credits li::before{
+  content:"";
+  position:absolute;
+  left:0;top:.55em;
+  width:10px;height:1.5px;
+  background:var(--cyan);
+  border-radius:2px;
+}
+.leader__credits strong{color:#fff;font-weight:600}
+.leader__credits em{color:var(--cyan-2);font-style:italic;font-weight:500}
+
+/* ── Light variant — Leadership page: white section background with white cards */
+.section--leadership--light{background:#ffffff;color:var(--text-dark)}
+.section--leadership--light::before,
+.section--leadership--light::after{display:none}
+.section--leadership--light .leader{
+  background:#ffffff;
+  border:1px solid rgba(35,75,125,.18);
+  color:#0a0a0a;
+  box-shadow:
+    0 2px 6px rgba(35,75,125,.1),
+    0 22px 44px -22px rgba(35,75,125,.32);
+}
+.section--leadership--light .leader:hover{
+  border-color:rgba(35,75,125,.32);
+  box-shadow:
+    0 4px 12px rgba(35,75,125,.14),
+    0 32px 60px -22px rgba(35,75,125,.5);
+}
+/* Role kicker — small uppercase tag in copper-amber to echo the photo ring */
+.section--leadership--light .leader__role{
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#d97e3d;
+}
+/* Name — Cormorant Garamond, larger and more authoritative */
+.section--leadership--light .leader h3{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-weight:700;
+  font-size:1.78rem;
+  line-height:1.18;
+  color:#0a0a0a;
+  letter-spacing:-.012em;
+}
+.section--leadership--light .leader h3 span{
+  font-size:.68em;
+  font-weight:500;
+  color:rgba(10,10,10,.55);
+  font-style:italic;
+  letter-spacing:0;
+}
+/* Institutional title — Crimson Pro italic, editorial */
+.section--leadership--light .leader__title{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:1.02rem;
+  line-height:1.4;
+  color:#4366d8;
+  margin:0 0 18px;
+}
+/* Bio paragraphs — Crimson Pro, generous editorial body */
+.section--leadership--light .leader__body > p{
+  font-family:"Crimson Pro", Georgia, serif;
+  font-weight:400;
+  font-size:1.05rem;
+  line-height:1.62;
+  color:#0a0a0a;
+  margin:0 0 16px;
+  letter-spacing:.003em;
+}
+.section--leadership--light .leader__body > p:last-of-type{margin-bottom:22px}
+.section--leadership--light .leader__body > p strong{
+  font-weight:700;
+  color:#0a0a0a;
+}
+.section--leadership--light .leader__body > p em{
+  font-style:italic;
+  font-weight:500;
+  color:#d97e3d;            /* italic emphasis (e.g. TEMPO, CASEx, READ AI Digital) in warm copper-amber */
+}
+/* Credits — boxed credentials panel with a visible accent line above */
+.section--leadership--light .leader__credits{
+  list-style:none;
+  margin:8px 0 0;
+  padding:20px 22px;
+  background:linear-gradient(180deg,rgba(67,102,216,.05) 0%,rgba(67,102,216,.02) 100%);
+  border:1px solid rgba(67,102,216,.14);
+  border-top:3px solid #4366d8;             /* clearly visible accent line in brand indigo */
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  position:relative;
+}
+.section--leadership--light .leader__credits::before{
+  content:"Credentials";
+  position:absolute;
+  top:-11px;
+  left:18px;
+  background:#ffffff;
+  padding:0 10px;
+  font-family:var(--mono);
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#4366d8;
+}
+.section--leadership--light .leader__credits li{
+  font-family:var(--sans);
+  font-size:.92rem;
+  line-height:1.5;
+  color:rgba(10,10,10,.78);
+  padding:0 0 0 22px;
+  position:relative;
+}
+.section--leadership--light .leader__credits li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.55em;
+  width:8px;
+  height:8px;
+  background:#4366d8;
+  border-radius:50%;
+  box-shadow:0 0 0 3px rgba(67,102,216,.18);
+}
+.section--leadership--light .leader__credits strong{color:#4366d8;font-weight:700}
+.section--leadership--light .leader__credits em{color:#d97e3d;font-style:italic;font-weight:500}
+
+/* ── Restructured card: photo + identity side-by-side at the TOP, bio + credits below */
+.section--leadership--light .leader{
+  flex-direction:column;
+  align-items:stretch;
+  gap:24px;
+  transition:
+    transform .4s cubic-bezier(.22,.61,.36,1),
+    box-shadow .4s cubic-bezier(.22,.61,.36,1),
+    border-color .4s cubic-bezier(.22,.61,.36,1);
+}
+.section--leadership--light .leader:hover{transform:translateY(-6px)}
+.section--leadership--light .leader__head{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:26px;
+  align-items:center;
+}
+.section--leadership--light .leader__head .leader__photo{align-self:center}
+.section--leadership--light .leader__identity{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:0;
+}
+.section--leadership--light .leader__identity .leader__title{margin:0}
+/* Mobile: stack photo above identity */
+@media (max-width:680px){
+  .section--leadership--light .leader__head{
+    grid-template-columns:1fr;
+    justify-items:start;
+    gap:18px;
+  }
+}
+
+/* Headshot — blue ring with zoom/tilt animation on card hover */
+.section--leadership--light .leader__photo{
+  box-shadow:
+    0 0 0 4px #4366d8,                       /* brand indigo blue inner ring */
+    0 0 0 5px rgba(80,169,237,.55),          /* sky-blue halo */
+    0 0 26px rgba(80,169,237,.32),           /* ambient blue glow */
+    0 18px 30px -14px rgba(31,58,138,.5);    /* indigo drop shadow */
+  transition:
+    transform .5s cubic-bezier(.22,.61,.36,1),
+    box-shadow .5s cubic-bezier(.22,.61,.36,1);
+}
+.section--leadership--light .leader__photo img{
+  transition:transform .65s cubic-bezier(.22,.61,.36,1);
+}
+.section--leadership--light .leader:hover .leader__photo{
+  transform:scale(1.06) rotate(-2deg);
+  box-shadow:
+    0 0 0 4px #6ba1d4,
+    0 0 0 6px rgba(80,169,237,.7),
+    0 0 42px rgba(80,169,237,.55),
+    0 28px 50px -16px rgba(31,58,138,.6);
+}
+.section--leadership--light .leader:hover .leader__photo img{
+  transform:scale(1.12);
+}
+
+@media (max-width:980px){
+  .leadership__grid{grid-template-columns:1fr;gap:22px}
+  .leader{grid-template-columns:1fr;text-align:left;justify-items:start;gap:20px;padding:28px}
+  .leader__photo{width:110px;height:110px}
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────── */
+.footer{
+  background:#0a1226;
+  color:rgba(255,255,255,.78);
+  padding:72px 0 28px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.footer__top{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:48px;
+  margin-bottom:54px;
+}
+.footer__brand .brand{margin-bottom:14px}
+.footer__brand p{font-size:.88rem;line-height:1.55;color:rgba(255,255,255,.5);margin:0;max-width:32ch}
+/* Footer logo — visible on the dark navy background + pulsing sky-blue glow */
+.footer__brand .brand__img{
+  mix-blend-mode:normal;          /* override the nav's multiply blend that makes the logo disappear on dark */
+  background:#ffffff;
+  padding:8px 14px;
+  border-radius:10px;
+  height:52px;
+  box-shadow:
+    0 0 0 1px rgba(80,169,237,.25),
+    0 8px 22px rgba(80,169,237,.18);
+  animation:footer-logo-glow 3.5s ease-in-out infinite;
+}
+.footer__brand .brand:hover .brand__img{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 0 1px rgba(80,169,237,.5),
+    0 14px 34px rgba(80,169,237,.4);
+}
+@keyframes footer-logo-glow{
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(80,169,237,.22),
+      0 8px 22px rgba(80,169,237,.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1.5px rgba(80,169,237,.5),
+      0 14px 34px rgba(80,169,237,.45);
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .footer__brand .brand__img{animation:none}
+}
+.footer__col h4{
+  font-family:var(--sans);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#fff;
+  margin:0 0 16px;
+}
+.footer__col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.footer__col a{font-size:.92rem;color:rgba(255,255,255,.6)}
+.footer__col a:hover{color:var(--cyan-2)}
+.footer__col li{font-size:.92rem;color:rgba(255,255,255,.6)}
+.footer__bottom{
+  display:flex;
+  justify-content:space-between;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.06);
+  font-size:.82rem;
+  color:rgba(255,255,255,.4);
+}
+
+/* ─────────────────────────────────────────
+   REVEAL (scroll-in)
+   ───────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────── */
+@media (max-width:1100px){
+  .platform__steps{grid-template-columns:repeat(2,1fr)}
+  .hero__bg img{object-position:75% center}
+  .pipeline__sites{grid-template-columns:repeat(3,1fr)}
+  .footer__top{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media (max-width:900px){
+  .wrap{padding:0 28px}
+  .nav__links{display:none}
+  .nav__cta{display:none}
+  .nav__toggle{display:flex}
+  .nav.is-open .nav__links{
+    display:flex;flex-direction:column;
+    position:absolute;top:92px;left:0;right:0;
+    background:#ffffff;padding:24px 28px 30px;gap:18px;
+    border-bottom:1px solid rgba(67,102,216,.12);
+  }
+  .nav.is-open .nav__cta{display:inline-flex;margin-top:6px}
+  /* Mobile: shorter hero, image becomes a soft backdrop, white overlay holds text contrast */
+  .hero{padding:130px 0 80px;min-height:0}
+  .hero__bg img{object-position:80% center;opacity:.3}
+  .hero__overlay{
+    background:linear-gradient(180deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.8) 55%, rgba(255,255,255,.95) 100%);
+  }
+  .hero__copy{max-width:none}
+  .framework__inner,.partner__inner{grid-template-columns:1fr;gap:36px}
+  .challenge__inner{gap:36px}
+  .challenge__cards{grid-template-columns:1fr;gap:16px}
+  .approach__grid{grid-template-columns:1fr}
+  .platform__report{grid-template-columns:1fr;padding:34px 28px;gap:30px}
+  .pipeline__sites{grid-template-columns:repeat(2,1fr)}
+  .pform__row{grid-template-columns:1fr;gap:14px;margin-bottom:0}
+  .pform{padding:28px 22px}
+  .section{padding:80px 0}
+  .footer__top{grid-template-columns:1fr;gap:32px;margin-bottom:36px}
+  .footer__bottom{flex-direction:column;gap:6px}
+}
+@media (max-width:720px){
+  .challenge__inner{grid-template-columns:1fr;gap:32px}
+  .challenge__stat{justify-self:start;max-width:none}
+}
+@media (max-width:620px){
+  .pipeline__table th:nth-child(2),
+  .pipeline__table td:nth-child(2),
+  .pipeline__table th:nth-child(5),
+  .pipeline__table td:nth-child(5){display:none}
+  .pipeline__table th,.pipeline__table td{padding:14px}
+  .stats-strip__grid{grid-template-columns:1fr 1fr;gap:18px}
+  .stat__num{font-size:1.7rem}
+  .platform__steps{grid-template-columns:1fr}
+}
